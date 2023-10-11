@@ -1,4 +1,6 @@
 # 8BB-TOKEN server
+## API
+* [API 문서 보기](./API.md)
 ## 설치
 * $ npm install
 * /server/common 폴더안에 dataStore.sol, erc20.sol, erc721.sol 3개를 ganache에 서버계정으로 배포
