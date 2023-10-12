@@ -1,4 +1,5 @@
 # incentive community SERVER
+서버를 구축하고 사용자의 지갑을 만들어서 관리하며, 스마트 컨트랙트와 서버를 연동
 
 ## 기능 목록
 * Ganache의 첫번째 계정을 서버계정으로 설정
@@ -22,7 +23,7 @@
 ├── migrations : 데이터베이스 스키마의 버전 관리<br/>
 ├── models : 데이터베이스 모델을 정의<br/>
 ├── routes : API route를 정의<br/>
-├── services : DB와 CRUD, 블록체인 요청하고 결과를 controller에 전달<br/> 
+├── services : DB와 CRUD, 블록체인에 요청하고 결과를 controller에 전달<br/> 
 ├─ app.js<br/>
 ├─ env.example<br/>
 ├─ API.md<br/>
