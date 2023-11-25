@@ -1,0 +1,33 @@
+.title-box {
+  display: flex;
+  gap: 0.813rem;
+
+  & li {
+    & .title {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+      padding-bottom: 0.75rem;
+
+      &:hover {
+        color: var(--color-font-tab);
+      }
+
+      &.selected {
+        color: var(--color-font-tab);
+        /* box-shadow: inset 0 -2px 0 0 var(--color-font-tab); */
+      }
+    }
+
+    & .active-tab-indicator {
+      height: 2px;
+      background-color: var(--color-font-tab);
+    }
+  }
+}
