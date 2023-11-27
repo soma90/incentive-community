@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
@@ -9,24 +10,26 @@ import { uiActions } from "../store/ui-slice";
 
 const MainNavigation = () => {
   const dispatch = useDispatch();
-  const modalIsVisible = useSelector((state) => state.ui.modalIsVisible);
+  const authIsVisible = useSelector((state) => state.ui.authIsVisible);
 
   const handleLoginClick = () => {
-    dispatch(uiActions.setModalIsVisible(true));
+    dispatch(uiActions.setAuthIsVisible(true));
   };
 
   const handleConfirm = () => {
-    dispatch(uiActions.setModalIsVisible(false));
+    dispatch(uiActions.setAuthIsVisible(false));
   };
 
   return (
     <>
       <header className={styles.header}>
-        <h1>yop</h1>
+        <h1>
+          <Link to="/">yop</Link>
+        </h1>
         <Button onClick={handleLoginClick}>Log In</Button>
       </header>
       <AnimatePresence>
-        {modalIsVisible && (
+        {authIsVisible && (
           <Modal onConfirm={handleConfirm}>
             <AuthenticationPage />
           </Modal>
