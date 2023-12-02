@@ -6,19 +6,30 @@
   height: 100vh;
   z-index: 99;
   background: rgba(0, 0, 0, 0.45);
+
+  &.post-detail {
+    background: rgba(0, 0, 0, 0.8);
+  }
 }
 
 .modal {
   position: fixed;
-  top: 30vh;
-  left: 50%;
-  max-width: var(--screen-width-1);
-  width: 100%;
-  /* transform: translateX(-50%); */
+  top: 25vh;
+  left: calc(50% - var(--screen-width-1)/2);
+  /* transform: translateX(-50%);  */
+  /* max-width: var(--screen-width-1); */
+  width: var(--screen-width-1);  
   z-index: 100;
-  overflow: hidden;
+  overflow: hidden;  
   background: rgb(255, 255, 255);
   border-radius: 20px;
+
+  &.post-detail {
+    top: 0;
+    border-radius: 0px;
+    height: 100%;
+    
+  }
 }
 
 @media only screen and (max-width: 528px) {
@@ -33,5 +44,6 @@
 
   :root {
     --translate-x-n50: 0%;
+    --screen-width-1: 100%;
   }
 }

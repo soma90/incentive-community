@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 import styles from "./Modal.module.css";
 
-const Backdrop = (props) => {
+const Backdrop = ({ themeClass, ...props }) => {
   return (
     <motion.div
-      className={styles.backdrop}
+      className={`${styles.backdrop} ${themeClass}`}
       onClick={props.onConfirm}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -16,38 +16,48 @@ const Backdrop = (props) => {
   );
 };
 
-const ModalOverlay = (props) => {
+const ModalOverlay = ({ variants, themeClass, ...props }) => {
   return (
     <motion.div
-      className={styles.modal}
-      initial={{ opacity: 0, y: 50, x: "var(--translate-x-n50)" }}
-      animate={{ opacity: 1, y: 0, x: "var(--translate-x-n50)" }}
-      exit={{
-        opacity: 0,
-        y: 50,
-        x: "var(--translate-x-n50)",
-        transition: { type: "tween" },
+      className={`${styles.modal} ${themeClass}`}
+      variants={{
+        open: {
+          opacity: 1,
+          y: 0,
+        },
+        closed: {
+          opacity: 0,
+          y: 50,
+        },
       }}
-      transition={{ type: "spring", stiffness: 300, exit: { duration: 0.2 } }}
+      initial="closed"
+      animate="open"
+      exit="closed"      
+      {...variants}
     >
       {props.children}
     </motion.div>
   );
 };
 
-const Modal = (props) => {
+const Modal = ({ variants, theme, ...props }) => {
+  const themes = new Map([["post-detail", true]]);
+  const themeClass = themes.get(theme) ? styles[theme] : "";
   const backdropRoot = document.getElementById("backdrop-root");
   const overlayRoot = document.getElementById("overlay-root");
+
   return (
     <>
       {backdropRoot &&
         ReactDOM.createPortal(
-          <Backdrop onConfirm={props.onConfirm} />,
+          <Backdrop onConfirm={props.onConfirm} themeClass={themeClass} />,
           backdropRoot
         )}
       {overlayRoot &&
         ReactDOM.createPortal(
-          <ModalOverlay>{props.children}</ModalOverlay>,
+          <ModalOverlay variants={variants} themeClass={themeClass}>
+            {props.children}
+          </ModalOverlay>,
           overlayRoot
         )}
     </>
