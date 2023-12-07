@@ -1,0 +1,100 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  border-radius: 100px;
+  padding: 0.5rem 0.75rem 0.7rem;
+  color: rgb(250, 250, 250);
+  cursor: pointer;
+  font: var(--font-14-600);
+  background-color: var(--primary-color);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--primary-darken01-color);
+  }
+  &:active {
+    background-color: var(--primary-darken02-color);
+  }
+
+  /* theme secondary*/
+  &.secondary {
+    background-color: var(--secondary-color);
+
+    &:hover {
+      background-color: var(--secondary-darken01-color);
+    }
+    &:active {
+      background-color: var(--secondary-darken02-color);
+    }
+  }
+
+  /* theme post*/
+  &.post {
+    background-color: var(--tertiary-color);
+    padding: 0.125rem 1rem 0.25rem;
+    min-height: 32px;
+    min-width: 32px;
+
+    &:hover {
+      background-color: var(--tertiary-darken01-color);
+    }
+    &:active {
+      background-color: var(--tertiary-darken02-color);
+    }
+  }
+
+  /* theme close-x*/
+  &.close-x {
+    padding: 0.313rem;
+    background-color: var(--color-input-default);
+
+    &:hover {
+      background-color: var(--color-input-default-hover);
+    }
+    &:active {
+      background-color: var(--color-input-default-active);
+    }
+
+    .x-mark {
+      position: relative;
+      width: 1.375rem;
+      height: 1.375rem;
+    }
+
+    .x-mark::before,
+    .x-mark::after {
+      content: "";
+      position: absolute;
+      /* top: 0;
+      left: 0;*/
+      height: 100%;
+      width: 1px;
+      background-color: black;
+    }
+
+    .x-mark::before {
+      transform: rotate(45deg);
+    }
+
+    .x-mark::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  /* theme max-width */
+  &.max-width {
+    width: 100%;
+    padding: 0.8rem 0.75rem 1rem;
+  }
+
+  /* theme profile */
+  &.profile {
+    width: 100%;
+    background-color: var(--tertiary-color);
+    padding-top: 0.313rem;
+    padding-bottom: 0.438rem;
+  }
+}
