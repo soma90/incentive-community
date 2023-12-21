@@ -2,9 +2,32 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Tab.module.css";
 
+const variants = {
+  enter: (direction) => {
+    return {
+      x: direction > 0 ? 50 : -50,
+      opacity: 1,
+    };
+  },
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => {
+    return {
+      zIndex: 0,
+      x: direction < 0 ? 50 : -50,
+      opacity: 0,
+    };
+  },
+};
+
 const Tab = ({ title, ...props }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
   const clickHandler = (index) => {
+    setDirection(selectedIndex < index ? 1 : -1);
     setSelectedIndex(index);
   };
 
@@ -34,15 +57,27 @@ const Tab = ({ title, ...props }) => {
             );
           })}
       </ul>
-      <div>
-        <AnimatePresence mode="wait">
-          {React.Children.map(props.children, (child, i) => {
-            if (selectedIndex === i) {
-              return child;
-            }
-          })}
-        </AnimatePresence>
-      </div>
+      <AnimatePresence mode="wait" custom={direction} initial={false}>
+        {React.Children.map(props.children, (child, i) => {
+          if (selectedIndex === i) {
+            return (
+              <motion.div
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                /* transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }} */
+              >
+                {child}
+              </motion.div>
+            );
+          }
+        })}
+      </AnimatePresence>
     </div>
   );
 };
