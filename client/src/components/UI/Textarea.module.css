@@ -1,0 +1,46 @@
+.textarea-box {
+  position: relative;
+
+  & .text-area {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    resize: none;
+    outline: none;
+    width: 100%;
+    border: 1px solid var(--color-textarea-default);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.313rem;
+    transition: border-color 0.3s ease;
+
+    &.have-max-length {
+      padding: 0.5rem 4.25rem 0.5rem 1rem;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:active,
+    &:focus {
+      border-color: 1px solid var(--color-textarea-default-active);
+    }
+  }
+
+  & .text-length {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 12px;
+    text-transform: uppercase;
+    bottom: 12px;
+    color: #878a8c;
+    pointer-events: none;
+    position: absolute;
+    right: 12px;
+  }
+}
