@@ -1,0 +1,9 @@
+.val-msg {
+  font-size: 0.75rem;
+  min-height: 0.75rem;
+  color: #0a6000;
+
+  &.error {
+    color: #a50016;
+  }
+}
