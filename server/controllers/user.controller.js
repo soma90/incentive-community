@@ -123,7 +123,6 @@ module.exports = {
           res.status(503).send({ message: "error. create wallet failed" });
           throw new Error("error. create wallet failed");
         }
-
         //DB저장
         const result = await user.user_join_post(
           req.body.nickname,
@@ -154,6 +153,7 @@ module.exports = {
           address: result.address,
           token_amount: result.token_amount,
           eth_amount: result.eth_amount,
+          createdAt: result.createdAt,
         };
         //로그인
         req.session.userData = filterdResult;
@@ -177,6 +177,7 @@ module.exports = {
         password: result.password,
         address: result.address,
         token_amount: result.token_amount,
+        createdAt: result.createdAt,
       };
       req.session.userData = userData;
       res.status(200).send({ message: "success", data: userData });
