@@ -1,4 +1,5 @@
 export function timeAgo(date) {
+  const inputDate = new Date(date);
   const now = new Date();
   const diffInSeconds = Math.floor((now - date) / 1000);
 
@@ -11,7 +12,7 @@ export function timeAgo(date) {
   } else if (diffInSeconds < 86400) {
     return `${Math.floor(diffInSeconds / 3600)} hours ago`;
   } else {
-    return date.toLocaleDateString("en-US", {
+    return inputDate.toLocaleDateString("en-US", {
       day: "2-digit",
       month: "short",
       year: "numeric",
