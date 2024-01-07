@@ -31,7 +31,8 @@
     nickname: "김블록",
     address: "0x0000",
     token_amount: 0,
-    eth_amount: 0
+    eth_amount: 0,
+    createdAt: "2024-01-05T14:14:22.000Z"
   }
 }
 ```
@@ -119,7 +120,8 @@
     nickname: "김블록",
     address: "0x0000",
     token_amount: 0,
-    eth_amount: 0
+    eth_amount: 0,
+    createdAt: "2024-01-05T14:14:22.000Z"
   }
 }
 ```
