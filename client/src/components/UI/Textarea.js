@@ -1,16 +1,28 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./Textarea.module.css";
 
-const Textarea = ({ value, onChange, ...props }) => {
+const Textarea = ({ value, onChange, hasError, ...props }) => {
   const [text, setText] = useState("");
   const textareaRef = useRef(null);
+
+  const animation = {
+    initial: { x: 0 },
+    transition: { type: "spring", duration: 0.2 },
+  };
+
+  if (hasError)
+    animation.animate = {
+      ...animation.animate,
+      x: [-10, 0, 10, 0],
+    };
 
   const handleChange = (event) => {
     setText(event.target.value);
     textareaRef.current.style.height = "inherit";
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
 
-    onChange && onChange();
+    onChange && onChange(event);
   };
 
   useEffect(() => {
@@ -22,7 +34,7 @@ const Textarea = ({ value, onChange, ...props }) => {
   }, []);
 
   return (
-    <div className={styles["textarea-box"]}>
+    <motion.div className={styles["textarea-box"]} {...animation}>
       <textarea
         className={`${styles["text-area"]} ${
           props.maxLength ? styles["have-max-length"] : ""
@@ -37,7 +49,7 @@ const Textarea = ({ value, onChange, ...props }) => {
           className={styles["text-length"]}
         >{`${text.length}/${props.maxLength}`}</div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
