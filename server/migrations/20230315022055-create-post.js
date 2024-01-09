@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       hits: {
         type: Sequelize.INTEGER
