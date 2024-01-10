@@ -67,33 +67,37 @@ module.exports = {
           res.status(400).send({ message: "error" });
           throw new Error("error");
         }
+
         //토큰전송
-        const tokenAmount = 10;
-        const postSetReceipt = await postSet(
-          req.session.userData.address,
-          tokenAmount, //토큰 전송용
-          result.id,
-          result.user_id,
-          result.title ? result.title : "",
-          result.content ? result.content : "",
-          result.hits ? result.hits : 0 //블록체인 저장용
-        );
-        if (!postSetReceipt) {
-          res.status(503).send({ message: "error. token transfer failed" });
-          throw new Error("error. token transfer failed");
+        if (process.env.WEB3 === "true") {
+          const tokenAmount = 10;
+          const postSetReceipt = await postSet(
+            req.session.userData.address,
+            tokenAmount, //토큰 전송용
+            result.id,
+            result.user_id,
+            result.title ? result.title : "",
+            result.content ? result.content : "",
+            result.hits ? result.hits : 0 //블록체인 저장용
+          );
+          if (!postSetReceipt) {
+            res.status(503).send({ message: "error. token transfer failed" });
+            throw new Error("error. token transfer failed");
+          }
+          const getPost = await getPostData(result.id); //체인데이터 저장 확인
+          console.log(getPost);
+
+          //정보 업데이트
+          await user_amountUpdate(
+            req.session.userData.id,
+            req.session.userData.address,
+            tx
+          );
+          await post.post_update(
+            { id: result.id, tx_hash: postSetReceipt.transactionHash },
+            tx
+          );
         }
-        const getPost = await getPostData(result.id); //체인데이터 저장 확인
-        console.log(getPost);
-        //정보 업데이트
-        await user_amountUpdate(
-          req.session.userData.id,
-          req.session.userData.address,
-          tx
-        );
-        await post.post_update(
-          { id: result.id, tx_hash: postSetReceipt.transactionHash },
-          tx
-        );
 
         return res.status(200).send({ message: "success" });
       });
@@ -101,5 +105,18 @@ module.exports = {
       console.log(e);
       return;
     }
+  },
+  post_mainById_delete: async (req, res) => {
+    //로그인 체크
+    if (!req.session.userData) {
+      return res.status(401).send({ message: "error. not logged in" });
+    }
+
+    const result = await post.post_mainById_delete(req.params.id);
+    console.log(result, req.params.id);
+    if (!result) {
+      return res.status(400).send({ message: "error" });      
+    }
+    res.status(200).send({ message: "success" });
   },
 };
