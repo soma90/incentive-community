@@ -1,0 +1,50 @@
+.auth-form {
+  /* width: 100%; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  padding: 0 5rem;
+
+  & h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  /* & p {
+    margin-top: 1.25rem;
+  } */
+
+  & .error-msg-box {
+    margin: 0.25rem 0;
+    padding: 0 1rem;
+  }
+
+  & .actions {
+    font-size: 0.875rem;    
+    margin-top: 0.5rem; 
+
+    & a {
+      color: var(--color-link-default);
+    }
+  }
+}
+
+.form-actions {
+  padding: 1.5rem 5rem;
+}
+
+@media only screen and (max-width: 528px) {
+  .form {
+    padding: 0 1rem;
+  }
+
+  .form-actions {
+    padding: 1.5rem 1rem;
+    margin-top: auto;
+  }
+}
