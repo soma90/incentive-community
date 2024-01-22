@@ -1,0 +1,46 @@
+.input-box {
+  position: relative;    
+  padding: 1.1rem 1rem 1.1rem;
+  border-radius: 1.25rem;  
+  background-color: var(--color-input-default);
+  &:hover {
+    background-color: var(--color-input-default-hover);
+    /* cursor: text; */
+  }
+
+  &.focus {
+    background-color: #e2e7e9;
+  }
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  transform-origin: 0% 50%;
+  transform: translateY(-50%);
+  transition: transform 0.15s ease-out;
+  font-size: 1rem;
+  color: #576f76;
+
+  &.focus {    
+    transform: translateY(-150%) scale(0.8);
+  }
+}
+
+.input {
+  opacity: 0;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 0.875rem;
+
+  &.focus {
+    opacity: 1;
+  }
+
+  /* &:focus-visible,
+  &:hover {
+    background-color: #e2e7e9;
+  } */
+}
