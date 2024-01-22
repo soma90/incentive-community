@@ -1,6 +1,6 @@
 import styles from "./ValidationMessage.module.css";
 
-const ValidationMessage = ({ isError, message, className }) => {
+const ValidationMessage = ({ isError = true, message, className }) => {
   return (
     <p
       className={`${styles["val-msg"]} ${
