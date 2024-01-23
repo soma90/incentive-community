@@ -1,0 +1,31 @@
+.root-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.5rem;
+
+  & > main {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .root-section {
+    & > main {
+      grid-template-columns: 1fr;
+
+      & > :first-child {
+        grid-row: 2;
+      }
+
+      & > :nth-child(2) {
+        grid-row: 1;
+      }
+    }
+  }
+}
