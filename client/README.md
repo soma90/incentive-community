@@ -1,6 +1,4 @@
-# incentive-comunity
-
-사용자는 글을 작성하며 커뮤니티 활동을 할 수 있는 사이트
+# incentive community FRONTEND
 
 ## 기능 목록
 
@@ -35,11 +33,7 @@
 
 ## 사용한 기술 스택 및 라이브러리
 
-- Javascript, React, CSS Module, Framer Motion, TanStack Query, Redux, ReactDom
-
-## 시연 영상
-
-[영상 링크](https://www.youtube.com/watch?v=twYPpJ99--A")
+Javascript, React, CSS Module, Framer Motion, TanStack Query, Redux, ReactDom
 
 ## 설치
 
