@@ -1,4 +1,4 @@
-# incentive community FRONTEND
+# incentive community CLIENT
 
 ## 기능 목록
 
