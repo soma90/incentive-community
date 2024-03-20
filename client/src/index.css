@@ -1,15 +1,62 @@
+:root {
+  --primary-color: #d93a00;
+  --primary-darken01-color: #be3600;
+  --primary-darken02-color: #962900;
+  --secondary-color: #0045ac;
+  --secondary-darken01-color: #003891;
+  --secondary-darken02-color: #002b77;
+  --tertiary-color: #0079d3;
+  --tertiary-darken01-color: #006dbe;
+  --tertiary-darken02-color: #0061a9;
+  --line-color: #0000001a;
+  --color-input-default: #eaedef;
+  --color-input-default-hover: #e2e7e9;
+  --color-input-default-active: #00000029;
+  --color-textarea-default: #edeff1;
+  --color-textarea-default-active: #1a1a1b;
+  --color-line-default: #ccc;
+  --color-line-hover: #898989;
+  --color-link-default: #0045ac;
+  --color-font-normal: #1c1c1c;
+  --color-font-light: #787c7e;
+  --color-font-tab: var(--tertiary-color);
+  --font-family: "Encode Sans Expanded", "sans-serif";
+  --font-14-600: normal 600 0.875rem/1.25rem var(--font-family);
+  --screen-width-1: 528px;
+  --translate-x-n50: -50%;
+  /*  #f5f7fa rgb(245,247,250) 게시글 호버시 색상*/
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;  
-  font-family: 'Encode Sans Expanded', 'sans-serif';
+  padding: 0;
+  color: var(--color-font-normal);
+  font-family: var(--font-family);
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul,
+li {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #898989;
 }
