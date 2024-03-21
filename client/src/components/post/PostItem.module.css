@@ -1,0 +1,39 @@
+.item-article {
+  padding: .5rem;
+}
+
+.title {
+  color: #222222;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.info-box {
+  display: flex;
+  gap: 0.5rem;
+
+  & .name {
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+
+  & .date {
+    color: #787c7e;
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+}
+
+.item-content {
+  font-size: 0.875rem;
+  line-height: 1.313rem;
+  max-height: 200px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+  &.overflow {
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
+  }
+}
