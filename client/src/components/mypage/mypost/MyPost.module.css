@@ -1,0 +1,8 @@
+.my-post {
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.post-list {
+  margin-top: -1px;
+}
