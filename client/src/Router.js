@@ -1,17 +1,49 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import React from "react";
+import {
+  useRoutes,
+  BrowserRouter,
+  useLocation,
+} from "react-router-dom";
 import RootLayout from "./pages/Root";
-import PostPage from "./pages/Post";
+import MainPage from "./pages/Main";
+import { AnimatePresence } from "framer-motion";
+import UserPage from "./pages/User";
 
-const Router = () => {
-  const router = createBrowserRouter([
+const MyRoutes = () => {
+  const element = useRoutes([
     {
       path: "/",
       element: <RootLayout />,
-      children: [{ index: true, element: <PostPage /> }],
+      children: [
+        {
+          index: true,
+          element: <MainPage />,
+        },
+        {
+          path: "user/:userInfo/:rNum",
+          element: <UserPage />,
+        },
+      ],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  const location = useLocation();
+
+  if (!element) return null;
+
+  return (
+    <AnimatePresence mode="wait" initial={false} >
+      {React.cloneElement(element, { key: location.pathname })}
+    </AnimatePresence>
+  );
+};
+
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <MyRoutes />
+    </BrowserRouter>
+  );
 };
 
 export default Router;
