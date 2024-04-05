@@ -64,9 +64,14 @@ export async function logOut() {
   return await response.json();
 }
 
-export async function fetchPosts({ signal, id }) {
-  let url = "https://localhost:8000/post/";
-  if (id !== undefined && id !== null) url += id;
+export async function fetchPosts({ signal, id, pageParam, limit }) {
+  const params = [];
+  if (id !== undefined && id !== null) params.push(`id=${id}`);
+  if (pageParam !== undefined && pageParam !== null)
+    params.push(`pageParam=${pageParam}`);
+  if (limit !== undefined && limit !== null) params.push(`limit=${limit}`);
+
+  const url = "https://localhost:8000/post?" + params.join("&");
 
   const response = await fetch(url, { signal: signal, credentials: "include" });
 
