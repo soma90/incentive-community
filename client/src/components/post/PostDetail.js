@@ -15,9 +15,13 @@ function PostDetail({ onConfirm }) {
 
   const postId = searchParams.get("id");
 
-  const postData = (data?.data || []).find(
-    (el) => Number(el.id) === Number(postId)
-  );
+  let postData;
+  for (const page of data.pages) {
+    postData = page.data.find((el) => Number(el.id) === Number(postId));
+    if (postData) break;
+  }
+
+  if (!postData) postData = [];
 
   useLayoutEffect(() => {
     document.documentElement.style.scrollbarGutter = "stable";

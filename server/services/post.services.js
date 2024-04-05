@@ -1,9 +1,20 @@
 const { post, user } = require("../models");
 
 module.exports = {
-  post_main_get: async () => {
+  post_main_get: async ({ id, pageParam = 0, limit }) => {
+    limit = limit ? Number(limit) : null;
+    pageParam = Number(pageParam);
+    const offset = pageParam * limit;
+
+    const whereCondition = {};
+    if (id !== undefined && id !== null) {
+      whereCondition.user_id = id;
+    }
+
     try {
       const result = await post.findAll({
+        limit,
+        offset,
         attributes: [
           "id",
           "title",
@@ -19,6 +30,7 @@ module.exports = {
             attributes: ["nickname"],
           },
         ],
+        where: whereCondition,
         order: [["createdAt", "DESC"]],
       });
       return result;

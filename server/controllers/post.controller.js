@@ -6,7 +6,10 @@ const { getPostData } = require("../services/web3.datastore.services");
 
 module.exports = {
   post_main_get: async (req, res) => {
-    const result = await post.post_main_get();
+    const { id, pageParam, limit } = req.query;
+
+    const result = await post.post_main_get({ id, pageParam, limit });
+
     if (result) {
       let filterdResult = [];
       for (obj of result) {
@@ -115,7 +118,7 @@ module.exports = {
     const result = await post.post_mainById_delete(req.params.id);
     console.log(result, req.params.id);
     if (!result) {
-      return res.status(400).send({ message: "error" });      
+      return res.status(400).send({ message: "error" });
     }
     res.status(200).send({ message: "success" });
   },

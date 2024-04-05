@@ -1,7 +1,8 @@
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 import styles from "./Post.module.css";
 import { uiActions } from "../../store/ui-slice";
@@ -14,15 +15,26 @@ import LoadingIndicator from "../UI/LoadingIndicator";
 import PostItem from "./PostItem";
 import PostDetail from "./PostDetail";
 
+const LIMIT = 5;
+
 const Post = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const observerTarget = useRef(null);
   const modalIsVisible = useSelector((state) => state.ui.modalIsVisible);
   const { variants, variantsClickHandler, clickedElement } = useMoveVariants();
-  const { data, isPending, isError, error } = useQuery({
+  /* const { data, isPending, isError, error } = useQuery({
     queryKey: ["post"],
     queryFn: ({ signal }) => fetchPosts({ signal }),
-  });
+  }); */
+  const { data, isError, error, fetchNextPage, hasNextPage, isFetching } =
+    useInfiniteQuery({
+      queryKey: ["post"],
+      queryFn: ({ signal, pageParam = 0 }) =>
+        fetchPosts({ signal, pageParam, limit: LIMIT }),
+      getNextPageParam: (lastPage, pages) =>
+        lastPage.data.length < LIMIT ? undefined : pages.length,
+    });
 
   const handleClick = (event) => {
     dispatch(uiActions.setModalIsVisible(true));
@@ -49,6 +61,17 @@ const Post = () => {
     dispatch(uiActions.setModalIsVisible(false));
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) fetchNextPage();
+      },
+      { threshold: 1 }
+    );
+    observer.observe(observerTarget.current);
+    return () => observer.disconnect();
+  }, [fetchNextPage]);
+
   const animation = {
     /* initial: { y: -30, opacity: 0 },
     animate: { y: 0, opacity: 1 },
@@ -57,7 +80,7 @@ const Post = () => {
 
   let content = <></>;
 
-  if (isPending) {
+  if (isFetching) {
     content = <LoadingIndicator />;
   }
 
@@ -70,25 +93,28 @@ const Post = () => {
   }
 
   if (data) {
-    const postList = data?.data || [];
     content = (
       <ListVertical
-        currentListLength={postList.length}
+        currentListLength={data.pages[0].data.length}
         animation={animation}
         fallbackContent={"There hasn't been any post"}
       >
-        {postList.map((el, i) => (
-          <li key={el.id} className={styles["post-list"]}>
-            <Card theme="all" toArr={`?id=${el.id}`} onClick={handleClick}>
-              <PostItem
-                nickname={el.nickname}
-                createDate={el.createdAt}
-                title={el.title}
-                content={el.content}
-                hasMask={true}
-              />
-            </Card>
-          </li>
+        {data.pages.map((page, i) => (
+          <React.Fragment key={i}>
+            {page.data.map((el) => (
+              <li key={el.id} className={styles["post-list"]}>
+                <Card theme="all" toArr={`?id=${el.id}`} onClick={handleClick}>
+                  <PostItem
+                    nickname={el.nickname}
+                    createDate={el.createdAt}
+                    title={el.title}
+                    content={el.content}
+                    hasMask={true}
+                  />
+                </Card>
+              </li>
+            ))}
+          </React.Fragment>
         ))}
       </ListVertical>
     );
@@ -97,6 +123,7 @@ const Post = () => {
   return (
     <section className={styles.post}>
       {content}
+      <div ref={observerTarget}>{hasNextPage && <LoadingIndicator />}</div>
       <AnimatePresence
         onExitComplete={() => {
           clickedElement && (clickedElement.style.opacity = 1);
