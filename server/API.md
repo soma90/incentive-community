@@ -333,6 +333,66 @@
 <br/>
 <br/>
 
+### 글 조회하기 2
+
+#### URL
+
+| 요청 메소드 | 요청 URL |
+| ----------- | -------- |
+| GET         | /post    |
+
+#### Query Params
+
+| 구분      | 데이터 타입 | 설명               |
+| --------- | ----------- | ------------------ |
+| id        | number      | 사용자 ID          |
+| pageParam | number      | 가져올 페이지 번호 |
+| limit     | number      | 페이지당 데이터 수 |
+
+#### Response
+
+| 상태      | 메세지         | 상태코드 |
+| --------- | -------------- | -------- |
+| 성공      | success        | 200      |
+| 실패      | error          | 400      |
+| 게시글0개 | not found list | 404      |
+
+##### 성공
+
+| 구분      | 설명        | 데이터 타입            |
+| --------- | ----------- | ---------------------- |
+| id        | PostId      | number                 |
+| title     | 제목        | string                 |
+| content   | 내용        | string                 |
+| createdAt | 생성 시간   | number(unix timestamp) |
+| updatedAt | 수정 시간   | number(unix timestamp) |
+| hits      | 조회수      | number                 |
+| userId    | 사용자 ID   | number                 |
+| nickname  | 사용자 이름 | string                 |
+
+###### Example
+
+```javascript
+{
+  message: "success",
+  data: {
+    id: 1,
+    title: "제목",
+    content: "내용",
+    hits: 100,
+    createdAt: 1678944141920,
+    updatedAt: 1678944141920,
+    userId: 1,
+    nickname: "이름",
+  }
+}
+```
+
+##### 실패 (400)
+
+<br/>
+<br/>
+
 ### 글 작성하기
 
 #### URL
@@ -357,6 +417,49 @@
 | 실패                                      | error                        | 400      |
 | 로그인X                                   | error. not logged in         | 401      |
 | 토큰 전송 실패, 블록체인 데이터 저장 실패 | error. token transfer failed | 503      |
+
+##### 성공
+
+###### Example
+
+```javascript
+{
+  message: "success";
+}
+```
+
+##### 실패
+
+```javascript
+{
+  message: "error";
+}
+```
+
+<br/>
+<br/>
+
+### 글 작성하기
+
+#### URL
+
+| 요청 메소드 | 요청 URL  |
+| ----------- | --------- |
+| DELETE      | /post/:id |
+
+#### Params
+
+| 구분 | 설명      | 데이터 타입 |
+| ---- | --------- | ----------- |
+| id   | 포스트 ID | number      |
+
+#### Response
+
+| 상태    | 메세지               | 상태코드 |
+| ------- | -------------------- | -------- |
+| 성공    | success              | 200      |
+| 실패    | error                | 400      |
+| 로그인X | error. not logged in | 401      |
 
 ##### 성공
 
