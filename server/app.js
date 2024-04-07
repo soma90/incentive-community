@@ -9,6 +9,7 @@ const erc20 = require("./services/web3.erc20.services");
 const erc721 = require("./services/web3.erc721.services");
 const dataStore = require("./services/web3.datastore.services");
 require("dotenv").config();
+const { webSocket } = require("./utils/socket");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -83,4 +84,7 @@ if (fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")) {
 } else {
   server = app.listen(PORT);
 }
+
+webSocket(server);
+
 module.exports = server;
