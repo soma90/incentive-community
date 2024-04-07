@@ -1,4 +1,4 @@
-# incentive community CLIENT
+# Yop CLIENT
 
 ## 기능 목록
 

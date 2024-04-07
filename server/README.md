@@ -1,4 +1,4 @@
-# incentive community SERVER
+# Yop SERVER
 서버를 구축하고 사용자의 지갑을 만들어서 관리하며, 스마트 컨트랙트와 서버를 연동
 
 ## 기능 목록

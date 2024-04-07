@@ -1,4 +1,4 @@
-# incentive-community
+# Yop
 
 사용자는 글을 작성하며 커뮤니티 활동을 할 수 있는 사이트
 
