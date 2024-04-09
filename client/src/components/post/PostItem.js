@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
 import styles from "./PostItem.module.css";
-import { timeAgo } from "../../util/util";
+import { timeAgo } from "../../utils/util";
 
 const MAXHEIGHT = 200;
 

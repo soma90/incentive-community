@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 
 import { userActions } from "../../store/user-slice";
-import { logOut } from "../../util/http";
+import { logOut } from "../../utils/http";
 import ValidationMessage from "../UI/ValidationMessage";
 
 const Logout = (props) => {

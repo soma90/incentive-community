@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import styles from "./MyPost.module.css";
-import { deletePost, fetchPosts, queryClient } from "../../../util/http";
+import { deletePost, fetchPosts, queryClient } from "../../../utils/http";
 import MyPostItem from "./MyPostItem";
 import Card from "../../UI/Card";
 import ListVertical from "../../UI/ListVertical";

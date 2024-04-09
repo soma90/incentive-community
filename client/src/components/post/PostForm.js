@@ -1,7 +1,7 @@
 import { stagger, useAnimate } from "framer-motion";
 import styles from "./PostForm.module.css";
 import useInput from "../../hooks/useInput";
-import { isNotEmpty } from "../../util/validation";
+import { isNotEmpty } from "../../utils/validation";
 import Textarea from "../UI/Textarea";
 import ValidationMessage from "../UI/ValidationMessage";
 

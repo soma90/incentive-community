@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 
 import styles from "./Authentication.module.css";
 import { userActions } from "../../store/user-slice";
-import { createUser, logIn } from "../../util/http";
+import { createUser, logIn } from "../../utils/http";
 import AuthForm from "./AuthForm";
 import ModalHeader from "../UI/ModalHeader";
 import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import ValidationMessage from "../UI/ValidationMessage";
-import { getRandomInt } from "../../util/util";
+import { getRandomInt } from "../../utils/util";
 
 const Authentication = (props) => {
   const [isVisible, setIsVisible] = useState(false);

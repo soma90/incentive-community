@@ -6,7 +6,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 import styles from "./Post.module.css";
 import { uiActions } from "../../store/ui-slice";
-import { fetchPosts } from "../../util/http";
+import { fetchPosts } from "../../utils/http";
 import useMoveVariants from "../../hooks/useMoveVariants";
 import Card from "../UI/Card";
 import ListVertical from "../UI/ListVertical";

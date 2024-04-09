@@ -3,7 +3,7 @@ import { stagger, useAnimate } from "framer-motion";
 
 import styles from "./AuthForm.module.css";
 import useInput from "../../hooks/useInput";
-import { isNotEmpty } from "../../util/validation";
+import { isNotEmpty } from "../../utils/validation";
 import LabelInput from "../UI/LabelInput";
 import ValidationMessage from "../UI/ValidationMessage";
 

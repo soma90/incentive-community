@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./UserProfile.module.css";
 import { faFaceGrimace } from "@fortawesome/free-regular-svg-icons";
 import { faCakeCandles, faCoins } from "@fortawesome/free-solid-svg-icons";
-import { getRandomInt } from "../../util/util";
+import { getRandomInt } from "../../utils/util";
 import Button from "../UI/Button";
 import NewPost from "../post/NewPost";
 

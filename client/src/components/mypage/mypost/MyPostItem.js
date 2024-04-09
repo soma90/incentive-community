@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRectangleList } from "@fortawesome/free-regular-svg-icons";
 
 import styles from "./MyPostItem.module.css";
-import { timeAgo } from "../../../util/util";
+import { timeAgo } from "../../../utils/util";
 
 const MyPostItem = ({
   title,

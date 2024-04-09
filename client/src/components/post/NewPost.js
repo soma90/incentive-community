@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
 import styles from "./NewPost.module.css";
-import { createPost, queryClient } from "../../util/http";
+import { createPost, queryClient } from "../../utils/http";
 import PostForm from "./PostForm";
 import Button from "../UI/Button";
 import Modal from "../UI/Modal";
