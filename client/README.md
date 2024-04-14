@@ -1,5 +1,29 @@
 # Yop CLIENT
 
+## 사용한 기술 스택 및 라이브러리
+
+React, Javascript, CSS Module, Framer Motion, React Query, Redux
+
+## 프로젝트 구성
+
+├── public<br/>
+├── src<br/>
+├──── components<br/>
+├────── auth: 회원 가입, 로그인, 로그아웃<br/>
+├────── mypage: 마이페이지에 생성되는 My Post 등 관련 컴퍼넌트<br/>
+├────── post: 메인페이지에 생성되는 Post 관련 컴퍼넌트<br/>
+├────── profile: 우측에 생성되는 프로필 관련 컴퍼넌트<br/>
+├────── UI: 공통으로 사용되는 UI 컴퍼넌트<br/>
+├──── hooks : validation, popup 애니메이션 custom hooks<br/>
+├──── pages : Page 컴퍼넌트<br/>
+├──── store : Redux 를 이용해 state 관리<br/>
+├──── util : util 함수, http 요청 함수, validation 함수<br/>
+├─── App.js<br/>
+├─── index.css<br/>
+├─── index.js<br/>
+├─── Router.js<br/>
+└─ README.md<br/>
+
 ## 기능 목록
 
 <img src="./public/main.gif">
@@ -29,30 +53,6 @@
 - Framer motion 과 CSS 를 이용해 페이지 이동과 팝업 등의 액션에 애니메이션
 - 미디어 쿼리를 이용해 반응형 웹 개발
 - Node.js Express 이용해 REST API를 구축하고 서버를 구현. API 문서 작성
-
-## 프로젝트 구성
-
-├── public<br/>
-├── src<br/>
-├──── components<br/>
-├────── auth: 회원 가입, 로그인, 로그아웃<br/>
-├────── mypage: 마이페이지에 생성되는 My Post 등 관련 컴퍼넌트<br/>
-├────── post: 메인페이지에 생성되는 Post 관련 컴퍼넌트<br/>
-├────── profile: 우측에 생성되는 프로필 관련 컴퍼넌트<br/>
-├────── UI: 공통으로 사용되는 UI 컴퍼넌트<br/>
-├──── hooks : validation, popup 애니메이션 custom hooks<br/>
-├──── pages : Page 컴퍼넌트<br/>
-├──── store : Redux 를 이용해 state 관리<br/>
-├──── util : util 함수, http 요청 함수, validation 함수<br/>
-├─── App.js<br/>
-├─── index.css<br/>
-├─── index.js<br/>
-├─── Router.js<br/>
-└─ README.md<br/>
-
-## 사용한 기술 스택 및 라이브러리
-
-Javascript, React, CSS Module, Framer Motion, TanStack Query, Redux, ReactDom
 
 ## 설치
 
