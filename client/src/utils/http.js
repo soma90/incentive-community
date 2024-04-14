@@ -124,3 +124,24 @@ export async function deletePost({ id }) {
 
   return response.json();
 }
+
+export async function generate({ prompt }) {
+  const response = await fetch(`https://localhost:8000/post/generate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt }),
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while generate");
+    error.code = response.status;
+    error.info = await response.json();
+
+    throw error;
+  }
+
+  return await response.json();
+}

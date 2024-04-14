@@ -46,6 +46,23 @@
     }
   }
 
+  /*writer*/
+  &.writer {
+    border: 1px solid var(--tertiary-color);
+    background-color: #fff;
+    color: var(--tertiary-color);
+    padding: 0.125rem 1rem 0.25rem;
+    min-height: 32px;
+    min-width: 32px;
+
+    &:hover {
+      border-color: var(--tertiary-darken01-color);
+    }
+    &:active {
+      border-color: var(--tertiary-darken02-color);
+    }
+  }
+
   /* theme close-x*/
   &.close-x {
     padding: 0.313rem;

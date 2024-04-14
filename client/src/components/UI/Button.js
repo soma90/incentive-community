@@ -5,6 +5,7 @@ const Button = ({ theme, children, className, ...props }) => {
   const themes = new Map([
     ["secondary", true],
     ["post", true],
+    ["writer", true],
     ["close-x", true],
     ["max-width", true],
     ["profile", true],
