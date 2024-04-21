@@ -18,8 +18,8 @@ const useMoveVariants = () => {
     const height = element.offsetHeight;
     const width = element.offsetWidth;
     const rect = element.getBoundingClientRect();
-    const x = rect.left;
-    const y = rect.top;
+    const left = rect.left;
+    const top = rect.top;
     element.style.opacity = 0;
 
     setVariants({
@@ -32,8 +32,8 @@ const useMoveVariants = () => {
           ...openVariant,
         },
         closed: {
-          top: y,
-          left: x,
+          top: top,
+          left: left,
           height,
           width,
           ...closeVariant,
