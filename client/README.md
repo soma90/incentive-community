@@ -17,7 +17,7 @@ React, Javascript, CSS Module, Framer Motion, React Query, Redux
 ├──── hooks : validation, popup 애니메이션 custom hooks<br/>
 ├──── pages : Page 컴퍼넌트<br/>
 ├──── store : Redux 를 이용해 state 관리<br/>
-├──── util : util 함수, http 요청 함수, validation 함수<br/>
+├──── util : util 함수, http 요청 함수, validation 함수, socket 함수<br/>
 ├─── App.js<br/>
 ├─── index.css<br/>
 ├─── index.js<br/>
@@ -52,7 +52,6 @@ React, Javascript, CSS Module, Framer Motion, React Query, Redux
 - UI 컴포넌트 개발
 - Framer motion 과 CSS 를 이용해 페이지 이동과 팝업 등의 액션에 애니메이션
 - 미디어 쿼리를 이용해 반응형 웹 개발
-- Node.js Express 이용해 REST API를 구축하고 서버를 구현. API 문서 작성
 
 ## 설치
 

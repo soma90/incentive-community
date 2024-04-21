@@ -9,12 +9,13 @@
 ## 프로젝트 구성
 
 ├── common : abi, soladity 파일<br/>
-├── config : 데이터베이스 연결 설정 저장<br/>
+├── config : 데이터베이스, AI 연결 설정 저장<br/>
 ├── controllers : 요청과 응답에 대한 로직 담당<br/>
 ├── migrations : 데이터베이스 스키마의 버전 관리<br/>
 ├── models : 데이터베이스 모델을 정의<br/>
 ├── routes : API route를 정의<br/>
 ├── services : DB와 CRUD, 블록체인에 요청하고 결과를 controller에 전달<br/>
+├── utils: socket, AI 관련 함수 정의
 ├─ app.js<br/>
 ├─ env.example<br/>
 ├─ API.md<br/>
