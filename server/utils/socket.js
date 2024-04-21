@@ -16,6 +16,7 @@ module.exports = {
       console.log(`a user connected ${this.socket.id}`);
 
       this.socket.on("disconnect", () => {
+        this.socket.disconnect();
         console.log("Client disconnected");
       });
     });
