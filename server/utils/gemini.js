@@ -10,6 +10,7 @@ const model = genAI.getGenerativeModel({
 
 module.exports = {
   writer: async (prompt, socket) => {
+    let result = {};
     try {
       const result = await model.generateContentStream(prompt);
       let text = "";
@@ -22,21 +23,25 @@ module.exports = {
           try {
             socket.emit("content", chunkText);
           } catch (err) {
-            console.error("Error emitting content:", error.message);
-            return { error: err };
+            console.error("Error emitting content:", err.message);
+            result.error = err;
+            break;
           }
         }
       }
 
       if (socket) {
-        socket.emit("content", "end content :)");
+        socket.emit(
+          "end_content",
+          result.error ? result.error : "end content :)"
+        );
         socket.disconnect();
       }
-
-      return { result: true };
     } catch (err) {
       console.error("Error generating content:", err.message);
-      return { error: err };
+      result.error = err;
     }
+
+    return result;
   },
 };
